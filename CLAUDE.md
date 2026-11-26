@@ -101,6 +101,10 @@ Rules:
 - **Auth (session 02, replaces JWT):** HTTP Basic with 2 seeded users, `doctor` (DOCTOR) and `admin` (ADMIN). ADMIN can also delete documents and view the whole registry.
 - **Storage (session 02, replaces Postgres/pgvector):** H2 in-memory plus SimpleVectorStore. Seed research/facts files are loaded at startup.
 - **Interface (session 01):** REST API only, no UI.
+- **Seed corpus (session 03):** synthetic MD files (labelled synthetic) on 12 fever/systemic-illness diseases: a FACT sheet per disease plus ≥4 RESEARCH case reports. They include test hooks: sarcoidosis has no mortality figure, TB has two conflicting figures, and one case report contains an injection sentence.
+- **Clarification (session 03):** the response is a provisional full answer plus 1–3 questions (`NEEDS_CLARIFICATION`), refined in the same session. Red flags are never held back.
+- **Budget hit (session 03):** best-effort `PARTIAL` answer; the critic still runs; `budgetExhausted: true`; HTTP 200.
+- **Critic (session 03):** an unsupported mortality figure becomes "not available"; an uncited entry/test/flag is dropped; a partly supported claim gets `unverified: true`. Citation validity (verbatim snippet) is checked in code.
 
 ## Git workflow
 
@@ -114,7 +118,8 @@ Rules:
   `node tools/export-session.mjs session-NN-<topic>`, then commit `chore(sessions): add session NN conversation log`.
 - Session 01: SDD project setup.
 - Session 02: refocus on agent design; simplified the platform. Sessions 01 and 02 ran in one conversation and share the log `sessions/session-01-setup-and-agent-design`.
-- Next: session 03, `docs/requirements.md`.
+- Session 03: `docs/requirements.md`.
+- Next: session 04, `docs/modules/platform/spec.md`.
 
 ## Working with the user
 
