@@ -113,7 +113,8 @@ Rules:
 - Each working session is numbered (`session-NN-<topic>`). At the end of a session:
   `node tools/export-session.mjs session-NN-<topic>`, then commit `chore(sessions): add session NN conversation log`.
 - Session 01: SDD project setup.
-- Session 02: refocus on agent design; simplified the platform.
+- Session 02: refocus on agent design; simplified the platform. Sessions 01 and 02 ran in one conversation and share the log `sessions/session-01-setup-and-agent-design`.
+- Next: session 03, `docs/requirements.md`.
 
 ## Working with the user
 
